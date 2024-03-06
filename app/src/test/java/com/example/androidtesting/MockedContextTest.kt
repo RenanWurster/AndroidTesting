@@ -10,23 +10,18 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.doReturn
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 private const val FAKE_STRING = "HELLO WORLD"
 
 @RunWith(MockitoJUnitRunner::class)
 class MockedContextTest {
-
+    //Mock wird verwendet, um die Dependecies zu mocken (was im Parameter der getesteten Klasse gegeben wird).
     @Mock
     private lateinit var mockContext: Context
 
     @Test
     fun readStringFromContext_LocalizedString() {
         // Given a mocked Context injected into the object under test...
-        val mockContext = mock<Context> {
+        mockContext = mock<Context> {
             on { getString(R.string.hello_world) } doReturn FAKE_STRING
         }
 
